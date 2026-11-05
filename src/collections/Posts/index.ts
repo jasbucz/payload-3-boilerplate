@@ -216,10 +216,6 @@ export const Posts: CollectionConfig<'posts'> = {
     },
     ...slugField(),
   ],
-  hooks: {
-    afterChange: [revalidatePost],
-    afterRead: [populateAuthors],
-  },
   versions: {
     drafts: {
       autosave: {
