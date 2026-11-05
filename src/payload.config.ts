@@ -80,5 +80,18 @@ export default buildConfig({
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },onInit: async (payload) => {
+    try {
+      await payload.db.drizzle.execute(sql`
+        ALTER TABLE "users" 
+        ADD COLUMN IF NOT EXISTS "enable_api_key" boolean DEFAULT false,
+        ADD COLUMN IF NOT EXISTS "api_key" varchar,
+        ADD COLUMN IF NOT EXISTS "api_key_index" varchar;
+      `);
+      payload.logger.info('Pomyślnie dodano kolumny dla API Key do tabeli users.');
+    } catch (e) {
+      payload.logger.error({ err: e }, 'Błąd podczas dodawania kolumn dla API Key');
+    }
   },
 })
+
