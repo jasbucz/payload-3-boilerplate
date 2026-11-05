@@ -80,7 +80,8 @@ export default buildConfig({
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },onInit: async (payload) => {
+  },
+  onInit: async (payload) => {
     try {
       await payload.db.drizzle.execute(sql`
         ALTER TABLE "users" 
@@ -92,6 +93,6 @@ export default buildConfig({
     } catch (e) {
       payload.logger.error({ err: e }, 'Błąd podczas dodawania kolumn dla API Key');
     }
-  },
+  }
 })
 
