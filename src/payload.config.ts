@@ -1,5 +1,4 @@
 // storage-adapter-import-placeholder
-import { postgresAdapter } from '@payloadcms/db-postgres'
 import { postgresAdapter, sql } from '@payloadcms/db-postgres'
 
 import sharp from 'sharp' // sharp-import
