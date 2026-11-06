@@ -85,9 +85,7 @@ export default buildConfig({
     try {
       await payload.db.drizzle.execute(sql`
         ALTER TABLE "users" 
-        RENAME COLUMN enable_api_key TO enable_a_p_i_key,
-        ADD COLUMN IF NOT EXISTS "api_key" varchar,
-        ADD COLUMN IF NOT EXISTS "api_key_index" varchar;
+        RENAME COLUMN enable_api_key TO enable_a_p_i_key;
       `);
       payload.logger.info('Pomyślnie dodano kolumny dla API Key do tabeli users.');
     } catch (e) {
