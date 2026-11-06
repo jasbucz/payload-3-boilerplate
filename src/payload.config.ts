@@ -83,10 +83,10 @@ export default buildConfig({
   },
   onInit: async (payload) => {
     try {
-      await payload.db.drizzle.execute(sql`
-        ALTER TABLE "users" 
-        RENAME COLUMN enable_api_key TO enable_a_p_i_key;
-      `);
+      // await payload.db.drizzle.execute(sql`
+      //   ALTER TABLE "users" 
+      //   RENAME COLUMN enable_api_key TO enable_a_p_i_key;
+      // `);
       payload.logger.info('Pomyślnie dodano kolumny dla API Key do tabeli users.');
     } catch (e) {
       payload.logger.error({ err: e }, 'Błąd podczas dodawania kolumn dla API Key');
