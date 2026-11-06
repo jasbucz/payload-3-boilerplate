@@ -85,7 +85,7 @@ export default buildConfig({
     try {
       await payload.db.drizzle.execute(sql`
         ALTER TABLE "users" 
-        ADD COLUMN IF NOT EXISTS "enable_api_key" boolean DEFAULT false,
+        RENAME COLUMN enable_api_key TO enable_a_p_i_key,
         ADD COLUMN IF NOT EXISTS "api_key" varchar,
         ADD COLUMN IF NOT EXISTS "api_key_index" varchar;
       `);
